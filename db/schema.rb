@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151117170518) do
+ActiveRecord::Schema.define(version: 20151117181609) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -39,5 +39,11 @@ ActiveRecord::Schema.define(version: 20151117170518) do
   end
 
   add_index "profiles", ["username"], name: "index_profiles_on_username", unique: true, using: :btree
+
+  create_table "snippets", force: :cascade do |t|
+    t.text    "content",        null: false
+    t.integer "start_position", null: false
+    t.integer "end_position",   null: false
+  end
 
 end
