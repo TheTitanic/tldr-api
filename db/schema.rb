@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120212537) do
+ActiveRecord::Schema.define(version: 20151120212850) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -28,11 +28,14 @@ ActiveRecord::Schema.define(version: 20151120212537) do
   add_index "accounts", ["token"], name: "index_accounts_on_token", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.string   "heading",    null: false
-    t.text     "content",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "heading",        null: false
+    t.text     "content",        null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
+    t.integer  "translation_id"
   end
+
+  add_index "comments", ["translation_id"], name: "index_comments_on_translation_id", using: :btree
 
   create_table "documents", force: :cascade do |t|
     t.string   "title",       null: false
@@ -77,6 +80,7 @@ ActiveRecord::Schema.define(version: 20151120212537) do
 
   add_index "translations", ["snippet_id"], name: "index_translations_on_snippet_id", using: :btree
 
+  add_foreign_key "comments", "translations"
   add_foreign_key "documents", "profiles"
   add_foreign_key "profiles", "accounts"
   add_foreign_key "snippets", "documents"
