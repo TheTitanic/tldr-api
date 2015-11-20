@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120232702) do
+ActiveRecord::Schema.define(version: 20151120234032) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -72,11 +72,12 @@ ActiveRecord::Schema.define(version: 20151120232702) do
   add_index "snippets", ["document_id"], name: "index_snippets_on_document_id", using: :btree
 
   create_table "translations", force: :cascade do |t|
-    t.string   "heading",    null: false
-    t.text     "content",    null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.string   "heading",           null: false
+    t.text     "content",           null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "snippet_id"
+    t.integer  "author_profile_id"
   end
 
   add_index "translations", ["snippet_id"], name: "index_translations_on_snippet_id", using: :btree
@@ -86,5 +87,6 @@ ActiveRecord::Schema.define(version: 20151120232702) do
   add_foreign_key "profiles", "accounts"
   add_foreign_key "snippets", "documents"
   add_foreign_key "snippets", "profiles", column: "author_profile_id"
+  add_foreign_key "translations", "profiles", column: "author_profile_id"
   add_foreign_key "translations", "snippets"
 end
