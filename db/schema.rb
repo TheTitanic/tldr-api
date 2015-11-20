@@ -28,32 +28,42 @@ ActiveRecord::Schema.define(version: 20151120204756) do
   add_index "accounts", ["token"], name: "index_accounts_on_token", unique: true, using: :btree
 
   create_table "comments", force: :cascade do |t|
-    t.string "heading", null: false
-    t.text   "content", null: false
+    t.string   "heading",    null: false
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "documents", force: :cascade do |t|
-    t.string  "title",       null: false
-    t.text    "description"
-    t.text    "content",     null: false
-    t.integer "length",      null: false
+    t.string   "title",       null: false
+    t.text     "description"
+    t.text     "content",     null: false
+    t.integer  "length",      null: false
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "profiles", force: :cascade do |t|
-    t.string "username", null: false
+    t.string   "username",   null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   add_index "profiles", ["username"], name: "index_profiles_on_username", unique: true, using: :btree
 
   create_table "snippets", force: :cascade do |t|
-    t.text    "content",        null: false
-    t.integer "start_position", null: false
-    t.integer "end_position",   null: false
+    t.text     "content",        null: false
+    t.integer  "start_position", null: false
+    t.integer  "end_position",   null: false
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "translations", force: :cascade do |t|
-    t.string "heading", null: false
-    t.text   "content", null: false
+    t.string   "heading",    null: false
+    t.text     "content",    null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

@@ -5,6 +5,8 @@ class CreateDocuments < ActiveRecord::Migration
       t.text :description
       t.text :content, null: false
       t.integer :length, null: false
+
+      t.timestamps null: false
     end
   end
 end

@@ -4,6 +4,8 @@ class CreateSnippets < ActiveRecord::Migration
       t.text :content, null:false
       t.integer :start_position, null:false
       t.integer :end_position, null:false
+
+      t.timestamps null: false
     end
   end
 end
