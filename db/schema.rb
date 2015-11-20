@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151120212850) do
+ActiveRecord::Schema.define(version: 20151120232702) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -60,12 +60,13 @@ ActiveRecord::Schema.define(version: 20151120212850) do
   add_index "profiles", ["username"], name: "index_profiles_on_username", unique: true, using: :btree
 
   create_table "snippets", force: :cascade do |t|
-    t.text     "content",        null: false
-    t.integer  "start_position", null: false
-    t.integer  "end_position",   null: false
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.text     "content",           null: false
+    t.integer  "start_position",    null: false
+    t.integer  "end_position",      null: false
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
     t.integer  "document_id"
+    t.integer  "author_profile_id"
   end
 
   add_index "snippets", ["document_id"], name: "index_snippets_on_document_id", using: :btree
@@ -84,5 +85,6 @@ ActiveRecord::Schema.define(version: 20151120212850) do
   add_foreign_key "documents", "profiles"
   add_foreign_key "profiles", "accounts"
   add_foreign_key "snippets", "documents"
+  add_foreign_key "snippets", "profiles", column: "author_profile_id"
   add_foreign_key "translations", "snippets"
 end
