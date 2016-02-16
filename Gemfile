@@ -15,6 +15,9 @@ gem 'pg'
 # scrypt
 gem 'scrypt'
 
+# Active Model Serializers
+gem 'active_model_serializers'
+
 # bcrypt
 # gem 'bcrypt'
 
