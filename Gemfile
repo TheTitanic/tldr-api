@@ -1,28 +1,31 @@
 source 'https://rubygems.org'
 
+# Ruby on Rails
+gem 'rails'
 
-gem 'rails', '4.2.4'
-
+# Ruby on Rails API
 gem 'rails-api'
 
-gem 'spring', :group => :development
+# Spring
+# gem 'spring', group: :development
 
-
+# PostgreSQL
 gem 'pg'
 
+# scrypt
+gem 'scrypt'
 
+# bcrypt
+# gem 'bcrypt'
 
-# To use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
-
-# To use Jbuilder templates for JSON
+# Jbuilder
 # gem 'jbuilder'
 
-# Use unicorn as the app server
+# unicorn
 # gem 'unicorn'
 
-# Deploy with Capistrano
-# gem 'capistrano', :group => :development
+# Capistrano
+# gem 'capistrano', group: :development
 
-# To use debugger
-# gem 'ruby-debug19', :require => 'ruby-debug'
+# debugger
+# gem 'ruby-debug19', require: 'ruby-debug'
